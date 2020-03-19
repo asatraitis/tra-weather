@@ -1,0 +1,37 @@
+.App {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--PrimaryColor1);
+    color: white;
+}
+.logo {
+    position: absolute;
+    color: var(--PrimaryColor3);
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.5rem;
+}
+.add-init svg.location {
+    fill: var(--SecondaryColor0);
+    width: 4.5rem;
+    animation: inout 5s infinite;
+    transition: .3s;
+}
+.add-init svg.location:hover {
+    cursor: pointer;
+    fill: var(--SecondaryColor1);
+}
+@keyframes inout {
+    0% {transform: scale(1)}
+    50% {transform: scale(1.3)}
+    100% {transform: scale(1)}
+}
+
+.init-help-text {
+    color: var(--PrimaryColor2)
+}

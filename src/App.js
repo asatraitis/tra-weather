@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
 
+import LocationSVG from './components/SVG/locationSVG';
+
 function App() {
   const [text, setText] = useState('');
   const checkAPI = () => {
@@ -16,10 +18,8 @@ function App() {
   return (
     <div className="App">
       <div className="logo">TraWeather</div>
-      <pre>
-        {text}
-      </pre>
-      <button onClick={checkAPI}>Check API</button>
+      <div className="add-init"><LocationSVG /></div>
+      <h3 className="init-help-text">Click to Add a Location</h3> 
     </div>
   );
 }
