@@ -1,4 +1,6 @@
 .form-modal {
+    border-radius: 5px;
+    min-width: 350px;
     position: absolute;
     padding: .75rem;
     top: 50%;

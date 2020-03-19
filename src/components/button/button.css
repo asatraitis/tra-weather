@@ -16,7 +16,8 @@ button.Button {
 }
 button.Button.primary {
     background-color: var(--SecondaryColor2);
-    color: var(--PrimaryColor1);
+    color: white;
+    font-weight: bold;
 }
 button.Button.primary:hover {
     -webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
@@ -28,6 +29,10 @@ button.Button.outlined {
 }
 button.Button.outlined:hover {
     background-color: rgba(0, 0, 0,.15);
+}
+button.Button.text {
+    color: var(--SecondaryColor3);
+    font-weight: bold;
 }
 button.Button.text:hover {
     background-color: rgba(0, 0, 0,.15);

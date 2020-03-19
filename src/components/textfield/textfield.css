@@ -16,6 +16,7 @@
     pointer-events: none;
 }
 .textfield input {
+    width: 100%;
     font-size: 1rem;
     outline: none;
     border: 1px solid var(--PrimaryColor3);
@@ -36,4 +37,29 @@
 .textfield input:not(:placeholder-shown) + label {
     top: 0;
     transform: translateY(-50%) scale(.9);
+}
+.textfield input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+.textfield input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+       
+}
+.textfield input[type="date"]::-webkit-clear-button {
+    display: none;
+    cursor: pointer;
+}
+/* .textfield input[type="date"]::-webkit-datetime-edit-text {
+    color: red;
+    font-size: 3rem;
+} */
+input::-webkit-datetime-edit-fields-wrapper {    
+    font-size: 1rem;
+}
+.textfield svg {    
+    pointer-events: none;        
+    position: absolute;
+    right: .75rem;
+    top: 50%;
+    transform: translateY(-50%);
 }

@@ -31,10 +31,10 @@ const FormModal = ({toggle}) => {
         <div ref={form} className={`form-modal ${className}`}>            
             <form onSubmit={handleSubmit}>
                 <Textfield label="Location" />
-                <Textfield label="Date (MM/DD/YYYY)" />
+                <Textfield onChange={(e) => {console.log(e.target.value)}} type="date" label="Date (MM/DD/YYYY)" />
                 <div className="button-grp">
                     <Button>Cancel</Button>
-                    <Button className="primary">Create!</Button>
+                    <Button className="primary">Create</Button>
                 </div>
             </form>
         </div>

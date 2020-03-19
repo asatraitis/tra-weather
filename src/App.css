@@ -23,7 +23,10 @@
     cursor: pointer;
 }
 .add-init:hover svg.location {
-    fill: var(--SecondaryColor1);
+    fill: var(--SecondaryColor1);    
+}
+.add-init:hover .init-help-text {
+    color: var(--PrimaryColor3);
 }
 .add-init svg.location {
     fill: var(--SecondaryColor0);
@@ -45,5 +48,6 @@
 }
 
 .init-help-text {
-    color: var(--PrimaryColor2)
+    color: var(--PrimaryColor2);
+    transition: color .2s;
 }
