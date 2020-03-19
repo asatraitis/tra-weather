@@ -1,0 +1,27 @@
+.form-modal {
+    position: absolute;
+    padding: .75rem;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: var(--PrimaryColor2);
+    transition: all .15s;
+    -webkit-box-shadow: 2px 7px 21px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 7px 21px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 7px 21px 0px rgba(0,0,0,0.75);
+}
+.form-modal.hidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) scale(0)
+}
+.form-modal.shown {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%) scale(1);
+}
+.form-modal form {
+    display: flex;
+    flex-direction: column;
+}
+.form-modal input {
+    padding: .75rem;
+}

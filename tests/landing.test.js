@@ -14,6 +14,5 @@ afterEach(async () => {
 
 test('Check for landing page for logo/text', async () => {
     const logo = await tab.$eval('div.logo', elem => elem.innerHTML)
-
     expect(logo).toEqual('TraWeather')
 })
