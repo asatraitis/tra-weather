@@ -15,7 +15,7 @@ function App() {
   }
   return (
     <div className="App">
-      TraWeather
+      <div className="logo">TraWeather</div>
       <pre>
         {text}
       </pre>
