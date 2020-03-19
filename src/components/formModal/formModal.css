@@ -22,6 +22,10 @@
     display: flex;
     flex-direction: column;
 }
-.form-modal input {
-    padding: .75rem;
+.form-modal form > * {
+    margin: .5rem .5rem;
+}
+.button-grp {
+    display: flex;
+    justify-content: flex-end;
 }

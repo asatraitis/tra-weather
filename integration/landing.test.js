@@ -1,4 +1,4 @@
-describe('App', () => {
+describe('TraWeather', () => {
     beforeAll(async () => {
         await page.goto('http://localhost:3000')
     })

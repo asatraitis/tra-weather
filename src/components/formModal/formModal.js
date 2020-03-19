@@ -1,6 +1,9 @@
 import React, {useEffect, useState, useRef} from 'react';
 import './formModal.css'
 
+import Textfield from '../textfield/textfield'
+import Button from '../button/button'
+
 const FormModal = ({toggle}) => {
     const [className, setClassName] = useState('hidden');
     const form = useRef();
@@ -27,8 +30,12 @@ const FormModal = ({toggle}) => {
     return (
         <div ref={form} className={`form-modal ${className}`}>            
             <form onSubmit={handleSubmit}>
-                <input type="text"/>
-                <input type="text"/>
+                <Textfield label="Location" />
+                <Textfield label="Date (MM/DD/YYYY)" />
+                <div className="button-grp">
+                    <Button>Cancel</Button>
+                    <Button className="primary">Create!</Button>
+                </div>
             </form>
         </div>
     )

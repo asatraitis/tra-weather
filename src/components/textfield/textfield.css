@@ -1,0 +1,39 @@
+.textfield {
+    position: relative;
+}
+.textfield label {
+    position: absolute;
+    font-size: 1rem;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--PrimaryColor2);
+    color: var(--PrimaryColor3);
+    padding: 0 0.3rem;
+    margin: 0 0.5rem;
+    transition: .1s ease-out;
+    transform-origin: left top;
+    pointer-events: none;
+}
+.textfield input {
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid var(--PrimaryColor3);
+    border-radius: 5px;  
+    padding: 1rem 0.7rem;
+    color: var(--PrimaryColor3);
+    transition: 0.1s ease-out;
+    background-color: var(--PrimaryColor2);
+}
+.textfield input:focus {
+    border-color: var(--PrimaryColor3);  
+}
+.textfield input:focus + label {
+    color: var(--PrimaryColor3);
+    top: 0;
+    transform: translateY(-50%) scale(.9);
+}
+.textfield input:not(:placeholder-shown) + label {
+    top: 0;
+    transform: translateY(-50%) scale(.9);
+}

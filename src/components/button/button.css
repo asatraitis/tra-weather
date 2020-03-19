@@ -1,0 +1,34 @@
+button.Button {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: inherit;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    padding: .5rem 0.7rem;
+    font-size: 15px;    
+    letter-spacing: 1px;
+    box-shadow: none;
+    transition: all .2s;
+    margin: 0 .2rem;
+    text-transform: uppercase;
+}
+button.Button.primary {
+    background-color: var(--SecondaryColor2);
+    color: var(--PrimaryColor1);
+}
+button.Button.primary:hover {
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+}
+button.Button.outlined {
+    border: 1px solid var(--PrimaryColor3);
+}
+button.Button.outlined:hover {
+    background-color: rgba(0, 0, 0,.15);
+}
+button.Button.text:hover {
+    background-color: rgba(0, 0, 0,.15);
+}
