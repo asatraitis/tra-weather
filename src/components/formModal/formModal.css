@@ -20,6 +20,9 @@
     opacity: 1;
     transform: translateX(-50%) translateY(-50%) scale(1);
 }
+.form-modal .form-container {
+    position: relative;
+}
 .form-modal form {
     display: flex;
     flex-direction: column;
@@ -30,4 +33,33 @@
 .button-grp {
     display: flex;
     justify-content: flex-end;
+}
+.form-modal .msg {
+    position: absolute;
+    margin: -.75rem;
+    padding: .75rem;
+    top: 0;
+    transform: translateY(calc(-100% - .25rem));
+    box-shadow: 2px 7px 21px 0px rgba(0,0,0,0.75);
+    left: 0;
+    right: 0;
+    background-color: var(--PrimaryColor2);
+    color: var(--PrimaryColor1);
+    border-radius: 5px;
+    transition: all .2s;
+}
+.form-modal .msg.success {
+    opacity: 0;
+    background-color: var(--CompoundColor);
+}
+.form-modal .msg.error {
+    opacity: 0;
+    background-color: var(--SecondaryColor1);
+    color: white;
+}
+.form-modal .msg.hide {
+    opacity: 0;
+}
+.form-modal .msg.show {
+    opacity: 1;
 }
