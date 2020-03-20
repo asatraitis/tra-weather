@@ -4,11 +4,12 @@ import './formModal.css'
 import Textfield from '../textfield/textfield'
 import Button from '../button/button'
 import Spinner from '../spinner/spinner';
+import useAPI from '../useAPI';
 
-const FormModal = ({toggle}) => {
+const FormModal = ({toggle, addLocation}) => {
     const [className, setClassName] = useState('hidden');
     const [msg, setMsg] = useState({state: 'hide', text: '', status: ''})
-    
+    const {send, response, loading} = useAPI();
 
     const form = useRef();
     const dateField = useRef();
@@ -31,6 +32,19 @@ const FormModal = ({toggle}) => {
             }
         },[setClassName, form, toggle]
     )
+
+    useEffect(() => {
+        if (response) {
+            console.log(response)
+            if (response.status === 'success') {                
+                //Create a new card
+                addLocation(response);
+            } else {                
+                setMsg({state: 'show', text: response.msg, status: 'error'})
+            }           
+        }
+    }, [response])
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const location = locationField.current.value;
@@ -45,13 +59,16 @@ const FormModal = ({toggle}) => {
                 newMsg.state = 'hide';
                 return newMsg;
             })
-            //CALL API            
+            //CALL API
+            const timeUNIX = Math.floor(Date.now(date) / 1000)
+            send({location, date: timeUNIX});            
         }
         console.log(validDate)
     }
     const validateDate = (date) => {
         const today = new Date(new Date().toISOString().split('T')[0]).getTime();
         const travelDate = new Date(date).getTime();
+        console.log(Math.floor(Date.now(date) / 1000))
 
         const validation = travelDate >= today;
 
@@ -72,12 +89,12 @@ const FormModal = ({toggle}) => {
     return (
         <div ref={form} className={`form-modal ${className}`}>
             <div className="form-container">
-                <Spinner />           
+                <Spinner show={loading} />           
                 <form onSubmit={handleSubmit}>
                     <Textfield ref={locationField} label="Location" />
                     <Textfield ref={dateField} type="date" label="Date (MM/DD/YYYY)" />
                     <div className="button-grp">
-                        <Button>Cancel</Button>
+                        <Button type="button">Cancel</Button>
                         <Button type="submit" className="primary">Create</Button>
                     </div>
                 </form>

@@ -1,13 +1,15 @@
 import {useEffect, useState} from 'react';
 
-const useAPI = (payload) => {
+const useAPI = (data) => {
+    const [payload, setPayload] = useState(data);
     const [response, setResponse] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [request, setRequest] = useState(false)
 
-    const send = () => {
+    const send = (newPayload) => {
         setRequest(true)
         setLoading(true);
+        setPayload(newPayload);
     }
 
     useEffect(() => {
@@ -18,6 +20,10 @@ const useAPI = (payload) => {
                 body: JSON.stringify(payload)
               }).then(response => response.json()).then(res => {                
                 setResponse(res);
+                setLoading(false);
+                setRequest(false);
+              }).catch(err => {
+                setResponse({status: 'error', msg: "Couldn't get to the Server."});
                 setLoading(false);
                 setRequest(false);
               })
