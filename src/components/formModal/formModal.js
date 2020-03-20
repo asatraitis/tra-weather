@@ -83,8 +83,8 @@ const FormModal = ({toggle, addLocation}) => {
             <div className="form-container">
                 <Spinner show={loading} />           
                 <form onSubmit={handleSubmit}>
-                    <Textfield ref={locationField} label="Location" />
-                    <Textfield ref={dateField} type="date" label="Date (MM/DD/YYYY)" />
+                    <Textfield ref={locationField} label="Location" name="location" />
+                    <Textfield ref={dateField} type="date" label="Date (MM/DD/YYYY)" name="date" />
                     <div className="button-grp">
                         <Button type="button" onClick={closeForm}>Cancel</Button>
                         <Button type="submit" className="primary">Create</Button>

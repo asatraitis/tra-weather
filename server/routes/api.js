@@ -3,15 +3,13 @@ const {callGoogleAPI, callDarkSkyAPI} = require('../externalAPI/apis');
 //const getGoogleURL = (key, location) => `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${key}`
 
 const initAPIRoutes = app => {    
-    app.post('/API', (req, res) => {
-        console.log('Incomming REQ..', req.body);
+    app.post('/API', (req, res) => {        
         const {location, date} = req.body
         let finalResponse = {};
         callGoogleAPI(location).then(googleResponse => {            
             if ((googleResponse || {}).status === 'OK') {
                 const coords = googleResponse.results[0].geometry.location;
-                finalResponse.location = googleResponse.results[0].formatted_address;
-                console.log('COORDS', coords)
+                finalResponse.location = googleResponse.results[0].formatted_address;                
                 callDarkSkyAPI(coords, date).then(darkskyResponse => {
                     if (darkskyResponse && darkskyResponse.currently) {
                         const {icon, temperature} = darkskyResponse.currently;
