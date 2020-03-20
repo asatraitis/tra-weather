@@ -1,6 +1,7 @@
-const initAPIRoutes = app => {
+const keys = require('../config/keys');
+const initAPIRoutes = app => {    
     app.post('/API', (req, res) => {
-        console.log('Incomming REQ..', req.body);
+        console.log('Incomming REQ..', req.body);        
         res.send({msg: 'Pending auth route logic..'})
     })
 }
