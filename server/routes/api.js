@@ -15,12 +15,12 @@ const initAPIRoutes = app => {
                 callDarkSkyAPI(coords, date).then(darkskyResponse => {
                     if (darkskyResponse && darkskyResponse.currently) {
                         const {icon, temperature} = darkskyResponse.currently;
-                        finalResponse = {icon, temperature, ...finalResponse, status:"success"}
+                        finalResponse = {icon, temperature, date, ...finalResponse, status:"success"}
                         res.send(finalResponse); 
                     } else {
                         res.send({status: 'error', msg: 'Failed to get weather for location :('})
                     }
-                }).catch(darkskyErr => {
+                }).catch(() => {
                     //handle fail darksky api call
                     res.send({status: 'error', msg: 'Failed to get weather for location :('})                    
                 })
@@ -28,7 +28,7 @@ const initAPIRoutes = app => {
                 //handle failed google api search
                 res.send({status: 'error', msg: 'Failed to google the location :('})
             }            
-        }).catch(err => {
+        }).catch(() => {
             res.send({status: 'error', msg: 'Failed to google the location :('})
             //handle fail from google api call
         })

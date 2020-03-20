@@ -46,8 +46,19 @@
     border-radius: 50%;
     background-color: rgba(0, 0, 0, .3);
 }
-
 .init-help-text {
     color: var(--PrimaryColor2);
     transition: color .2s;
+}
+.card-container:not(:last-of-type) {
+    margin-bottom: 1rem;
+}
+.add-location {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+.add-location {
+    cursor: pointer;
+    fill: var(--SecondaryColor0);
 }

@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState, useRef, useCallback} from 'react';
 import './formModal.css'
 
 import Textfield from '../textfield/textfield'
@@ -15,35 +15,29 @@ const FormModal = ({toggle, addLocation}) => {
     const dateField = useRef();
     const locationField = useRef();
 
+    const closeForm = useCallback(() => {
+        setClassName('hidden')
+        setTimeout(() => {
+            toggle()
+        },150) 
+    }, [setClassName, toggle])
     useEffect(
         () => {
             setClassName('shown');
-            const handleClick = (e) => {
-                if (!form.current.contains(e.target) && toggle) {
-                    setClassName('hidden')
-                    setTimeout(() => {
-                        toggle()
-                    },150)                    
-                }
-            }
-            document.addEventListener('click', handleClick)
-            return () => {
-                document.removeEventListener('click', handleClick)
-            }
-        },[setClassName, form, toggle]
+        },[setClassName]
     )
 
     useEffect(() => {
-        if (response) {
-            console.log(response)
+        if (response) {            
             if (response.status === 'success') {                
                 //Create a new card
                 addLocation(response);
+                closeForm()
             } else {                
                 setMsg({state: 'show', text: response.msg, status: 'error'})
             }           
         }
-    }, [response])
+    }, [response, addLocation, closeForm])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -60,15 +54,13 @@ const FormModal = ({toggle, addLocation}) => {
                 return newMsg;
             })
             //CALL API
-            const timeUNIX = Math.floor(Date.now(date) / 1000)
+            const timeUNIX = Math.floor(new Date(date).getTime() / 1000)
             send({location, date: timeUNIX});            
-        }
-        console.log(validDate)
+        }        
     }
     const validateDate = (date) => {
         const today = new Date(new Date().toISOString().split('T')[0]).getTime();
-        const travelDate = new Date(date).getTime();
-        console.log(Math.floor(Date.now(date) / 1000))
+        const travelDate = new Date(date).getTime();        
 
         const validation = travelDate >= today;
 
@@ -94,7 +86,7 @@ const FormModal = ({toggle, addLocation}) => {
                     <Textfield ref={locationField} label="Location" />
                     <Textfield ref={dateField} type="date" label="Date (MM/DD/YYYY)" />
                     <div className="button-grp">
-                        <Button type="button">Cancel</Button>
+                        <Button type="button" onClick={closeForm}>Cancel</Button>
                         <Button type="submit" className="primary">Create</Button>
                     </div>
                 </form>

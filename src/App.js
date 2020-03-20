@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import './App.css';
 
 import LocationSVG from './components/SVG/locationSVG';
 import FormModal from './components/formModal/formModal';
+import Card from './components/card/card';
 
 
 
@@ -10,23 +11,23 @@ function App() {
   const [locationForm, toggleLocationForm] = useState(false);
   const [locations, setLocations] = useState([]);
 
-  const showLocationForm = () => {
+  const showLocationForm = useCallback(() => {
     toggleLocationForm(state => !state);
-  }
-  const addLocation = (loc) => {
+  },[toggleLocationForm])
+  const addLocation = useCallback((loc) => {
     setLocations(oldLocations => {
       let newLocations = [...oldLocations];
       newLocations.push(loc);
-      console.log(newLocations)
       return newLocations;
     })
-  }
+  },[setLocations])
+
   return (    
       <div className="App">
         <div className="logo">TraWeather</div>
 
         {locations.length?(
-          locations.map(loc => <div key={loc.location}>LOCATION</div>)
+          locations.map(loc => <div className="card-container" key={loc.temperature + loc.date}><Card data={loc} /></div>)
         ):(
           <div onClick={showLocationForm} className="add-init">
           <LocationSVG />
@@ -40,7 +41,17 @@ function App() {
             <h1>FORM!</h1>
           </FormModal>
         :null
-        }                    
+        }  
+
+        {
+          locations.length?(
+            <div onClick={showLocationForm} className="add-location">
+              <LocationSVG size="60" />
+            </div>
+          ) : (
+            null
+          )
+        }                  
       </div>    
   );
 }

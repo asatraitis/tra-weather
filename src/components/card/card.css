@@ -1,0 +1,33 @@
+.card {
+    width: 350px;
+    height: 85px;
+    border: 1px solid var(--PrimaryColor3);
+    padding: .5rem;
+    border-radius: 5px;
+    display: flex;
+}
+.card .weather-icon {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    /* border-right: 1px solid var(--PrimaryColor3); */
+}
+.card .body {
+    padding: 0 .5rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
+}
+.card .body .location {
+    overflow: hidden;
+    white-space: nowrap;   
+    text-overflow: ellipsis;    
+    flex-grow: 1;
+    font-size: 24px;    
+}
+.card h5 {
+    margin: 0;
+}
