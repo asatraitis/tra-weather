@@ -3,10 +3,12 @@ import './formModal.css'
 
 import Textfield from '../textfield/textfield'
 import Button from '../button/button'
+import Spinner from '../spinner/spinner';
 
 const FormModal = ({toggle}) => {
     const [className, setClassName] = useState('hidden');
     const [msg, setMsg] = useState({state: 'hide', text: '', status: ''})
+    
 
     const form = useRef();
     const dateField = useRef();
@@ -69,7 +71,8 @@ const FormModal = ({toggle}) => {
     }
     return (
         <div ref={form} className={`form-modal ${className}`}>
-            <div className="form-container">           
+            <div className="form-container">
+                <Spinner />           
                 <form onSubmit={handleSubmit}>
                     <Textfield ref={locationField} label="Location" />
                     <Textfield ref={dateField} type="date" label="Date (MM/DD/YYYY)" />

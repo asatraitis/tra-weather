@@ -1,0 +1,35 @@
+.spinner {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: -.75rem;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+}
+.spinner .square {
+    opacity: .8;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    background-color: var(--CompoundColor);
+    animation: spin 3s infinite;
+}
+.spinner h5 {
+    margin: .5rem;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
